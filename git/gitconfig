@@ -1,0 +1,44 @@
+[init]
+	defaultBranch = master
+[core]
+	editor = vim
+	autocrlf = false
+	safecrlf = false
+	excludesfile = ~/dotfiles/git/gitignore
+[user]
+	name = Mykola Shestopal
+	email = nick4eva@gmail.com
+[alias]
+	co = checkout
+	ci = commit
+	st = status -s
+	br = branch -a
+	re = remote -v
+	hist = log --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr by %an)%Creset\n' --abbrev-commit
+	gla = log --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr by %an)%Creset' --abbrev-commit --graph --all
+	gl = !git --no-pager log --pretty=tformat:'%C(auto)%d%Creset %s %Cgreen(%cr by %an)%Creset' --abbrev-commit --graph --all -10
+	di = diff --ignore-space-at-eol -b -w --ignore-blank-lines
+	sta = stash
+	stp = stash pop
+	sty = stash apply
+	stl = stash list
+	type = cat-file -t
+	dump = cat-file -p
+	fa = fetch --all
+	m = checkout master
+	mm = merge master
+	ec = config --global --edit
+	edit = config --global --edit
+	cm = !git add -A && git commit -m
+	save = !git add -A && git commit -m 'SAVEPOINT'
+	wip = !git add -u && git commit -m 'WIP'
+	undo = reset HEAD~1 --mixed
+	amend = commit -a --amend
+[push]
+	default = current
+[mergetool]
+	prompt = false
+[rerere]
+	enabled = 1
+[credential]
+	helper = "!f() { /home/test/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/node /tmp/vscode-remote-containers-285323e1229e86d5f4e0810389874cf9b3b1786d.js $*; }; f"

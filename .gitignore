@@ -1,2 +1,7 @@
 # Ignore Vim undo file
 *.un~
+
+# Ignore .vscode
+.vscode
+
+todo.txt
