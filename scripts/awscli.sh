@@ -14,7 +14,7 @@ do_install() {
 	info "[awswcli] Install"
 	local awscli=/tmp/awscliv2.zip
 	download "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" "${awscli}"
-	unzip "${awscli}"
+	unzip -q "${awscli}" -d /tmp
 	sudo /tmp/aws/install
 }
 
