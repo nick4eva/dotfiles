@@ -15,6 +15,7 @@ do_install() {
 
 	info "[gh] Install ${GH_VERSION}"
 	local gh=/tmp/gh.deb
+	sudo rm -rf ${gh}
 	download "https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_amd64.deb" "${gh}"
 	sudo dpkg -i "${gh}"
 }

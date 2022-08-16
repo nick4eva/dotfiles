@@ -48,7 +48,7 @@ do_configure() {
 	# https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo/L/Regular/complete
 	info "[system][configure] Install patched fonts"
 	local install_dir="/tmp/nerd-fonts"
-	rm -rf "${install_dir}" && mkdir -p "${install_dir}"
+	sudo rm -rf "${install_dir}" && mkdir -p "${install_dir}"
 	git clone --quiet --filter=blob:none --sparse "https://github.com/ryanoasis/nerd-fonts.git" "${install_dir}"
 	(
 		cd "${install_dir}"
