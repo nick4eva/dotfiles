@@ -2,5 +2,14 @@
     "name": "dotfiles",
     "build": {
         "dockerfile": "../Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "EditorConfig.EditorConfig",
+                "DavidAnson.vscode-markdownlint",
+                "eamodio.gitlens"
+            ]
+        }
     }
 }
