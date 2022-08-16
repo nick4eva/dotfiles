@@ -36,7 +36,7 @@ do_configure() {
 	info "[system] Configure"
 	info "[system][configure] Create directories"
 	info "[system][configure][directories] Repositories"
-	sudo install -d -m 0755 -o "${USER}" -g "${USER}" /src
+	sudo install -d -m 0755 -o "${USER}" -g "${USER}" ~/src
 
 	info "[system][configure][directories] User Fonts"
 	install -d -m 0755 -o "${USER}" -g "${USER}" "${FONTS_DIR}"
