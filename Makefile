@@ -39,7 +39,7 @@ delta-configure: ## Configure delta
 gh: ## Install gh
 	@./scripts/gh.sh install
 
-devops: awscli ctop tfsec #kubectl istioctl ## Install and configure devops tools
+devops: awscli ctop tfsec tflint #kubectl istioctl ## Install and configure devops tools
 awscli: ## Install awscli
 	@./scripts/awscli.sh install
 ctop: ctop-install ctop-configure ## Install and configure ctop
@@ -49,3 +49,5 @@ ctop-configure: ## Configure ctop
 	@./scripts/ctop.sh configure
 tfsec: ## Install tfsec
 	@./scripts/tfsec.sh install
+tflint: ## Install tflint
+	@./scripts/tflint.sh install
