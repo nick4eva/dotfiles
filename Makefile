@@ -3,7 +3,7 @@ include test.mk
 .DEFAULT_GOAL := all
 .PHONY: git
 
-all: system git terminal devops ## Install and configure everything (default)
+all: system git terminal devops neovim ## Install and configure everything (default)
 help: ## Display help
 	@grep -hE '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -51,3 +51,11 @@ tfsec: ## Install tfsec
 	@./scripts/tfsec.sh install
 tflint: ## Install tflint
 	@./scripts/tflint.sh install
+
+neovim: tree-sitter neovim-install #neovim-configure ## Install and configure neovim and tree-sitter
+tree-sitter: ## Install tree-sitter
+	@./scripts/tree-sitter.sh install
+neovim-install: ## Install neovim
+	@./scripts/neovim.sh install
+# neovim-configure: ## Configure neovim
+# 	@./scripts/neovim.sh configure
