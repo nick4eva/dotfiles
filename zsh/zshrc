@@ -16,7 +16,7 @@ plugins=(
     # fast-syntax-highlighting
     git
     helm
-    kubectl
+    #kubectl
     terraform
     # vi-mode
     you-should-use

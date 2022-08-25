@@ -15,8 +15,6 @@ do_install() {
 		fontconfig
 		git
 		jq
-		ripgrep
-		shellcheck
 		tig
 		tmux
 		tree

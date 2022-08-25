@@ -5,7 +5,7 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-GH_VERSION="${GH_VERSION:=2.14.4}"
+GH_VERSION="${GH_VERSION:=2.14.7}"
 
 do_install() {
 	if [[ "$(gh --version 2>/dev/null)" == *"${GH_VERSION}"* ]]; then
@@ -15,7 +15,7 @@ do_install() {
 
 	info "[gh] Install ${GH_VERSION}"
 	local gh=/tmp/gh.deb
-	sudo rm -rf ${gh}
+	sudo rm -rf "${gh}"
 	download "https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_amd64.deb" "${gh}"
 	sudo dpkg -i "${gh}"
 }

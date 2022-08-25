@@ -11,7 +11,7 @@ NVIM_VERSION="${NVIM_VERSION:=0.7.2}"
 do_install() {
 	info "[neovim] Install"
 	local nvim="/tmp/nvim.deb"
-	sudo rm -rf ${nvim}
+	sudo rm -rf "${nvim}"
 	download "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux64.deb" "${nvim}"
 	sudo dpkg -i --force-overwrite "${nvim}"
 }
