@@ -8,32 +8,8 @@
 [user]
 	name = Mykola Shestopal
 	email = nick4eva@gmail.com
-[alias]
-	co = checkout
-	ci = commit
-	st = status -s
-	br = branch -a
-	re = remote -v
-	hist = log --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr by %an)%Creset\n' --abbrev-commit
-	gla = log --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr by %an)%Creset' --abbrev-commit --graph --all
-	gl = !git --no-pager log --pretty=tformat:'%C(auto)%d%Creset %s %Cgreen(%cr by %an)%Creset' --abbrev-commit --graph --all -10
-	di = diff --ignore-space-at-eol -b -w --ignore-blank-lines
-	sta = stash
-	stp = stash pop
-	sty = stash apply
-	stl = stash list
-	type = cat-file -t
-	dump = cat-file -p
-	fa = fetch --all
-	m = checkout master
-	mm = merge master
-	ec = config --global --edit
-	edit = config --global --edit
-	cm = !git add -A && git commit -m
-	save = !git add -A && git commit -m 'SAVEPOINT'
-	wip = !git add -u && git commit -m 'WIP'
-	undo = reset HEAD~1 --mixed
-	amend = commit -a --amend
+[include]
+	path = ~/.config/git/aliases.ini
 [push]
 	default = current
 [mergetool]
