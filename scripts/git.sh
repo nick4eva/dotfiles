@@ -7,8 +7,10 @@ source "$(pwd)/scripts/util.sh"
 
 do_configure() {
 	info "[git] Configure"
-	info "[git][configure] Create config file symlink"
+	info "[git][configure] Create config files symlinks"
+	mkdir -p "${XDG_CONFIG_HOME}/git"
 	ln -fs "$(pwd)/git/gitconfig" "${HOME}/.gitconfig"
+	ln -fs "$(pwd)/git/aliases.ini" "${XDG_CONFIG_HOME}/git/aliases.ini"
 
 	info "[git][configure] Create a commit-template file"
 	touch "$(pwd)/git/commit-template"
