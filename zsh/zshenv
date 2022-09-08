@@ -5,7 +5,7 @@
 if [[ ! "${PATH}" == *:.* ]]; then
     export PATH="${PATH}:."
 fi
-for dir in bin .bin; do
+for dir in bin .bin .local/bin; do
     if [[ ! "${PATH}" == *${HOME}/${dir}* ]]; then
         export PATH="${HOME}/${dir}:${PATH}"
     fi

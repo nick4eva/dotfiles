@@ -43,7 +43,7 @@ ripgrep: ## Install ripgrep
 shellcheck: ## Install shellcheck
 	@./scripts/shellcheck.sh install
 
-devops: awscli ctop tfsec tflint #kubectl istioctl ## Install and configure devops tools
+devops: awscli ctop tfsec tflint ansible #kubectl istioctl ## Install and configure devops tools
 awscli: ## Install awscli
 	@./scripts/awscli.sh install
 ctop: ctop-install ctop-configure ## Install and configure ctop
@@ -55,6 +55,8 @@ tfsec: ## Install tfsec
 	@./scripts/tfsec.sh install
 tflint: ## Install tflint
 	@./scripts/tflint.sh install
+ansible: ## Install Ansible
+	@./scripts/ansible.sh install
 
 neovim: tree-sitter neovim-install #neovim-configure ## Install and configure neovim and tree-sitter
 tree-sitter: ## Install tree-sitter
