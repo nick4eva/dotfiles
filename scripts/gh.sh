@@ -5,7 +5,7 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-GH_VERSION="${GH_VERSION:=2.14.7}"
+GH_VERSION="${GH_VERSION:=2.15.0}"
 
 do_install() {
 	if [[ "$(gh --version 2>/dev/null)" == *"${GH_VERSION}"* ]]; then

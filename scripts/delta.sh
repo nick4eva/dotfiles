@@ -5,7 +5,7 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-DELTA_VERSION="${DELTA_VERSION:=0.13.0}"
+DELTA_VERSION="${DELTA_VERSION:=0.14.0}"
 
 do_install() {
 	if [[ "$(delta --version 2>/dev/null)" == *"${DELTA_VERSION}"* ]]; then
@@ -22,7 +22,7 @@ do_install() {
 do_configure() {
 	info "[delta] Configure"
 	info "[delta][configure] Create config file symlink"
-	ln -fs "$(pwd)/delta/gitconfig-delta" "${HOME}/.gitconfig"
+	ln -fs "$(pwd)/delta/gitconfig-delta.ini" "${HOME}/.gitconfig"
 }
 
 main() {

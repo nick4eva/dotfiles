@@ -5,7 +5,7 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-TFLINT_VERSION="${TFLINT_VERSION:=0.39.3}"
+TFLINT_VERSION="${TFLINT_VERSION:=0.40.0}"
 
 do_install() {
 	if is_installed tflint; then
