@@ -5,7 +5,7 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-TFSEC_VERSION="${TFSEC_VERSION:=1.27.0}"
+TFSEC_VERSION="${TFSEC_VERSION:=1.27.6}"
 
 do_install() {
 	if is_installed tfsec; then
