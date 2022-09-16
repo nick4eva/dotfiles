@@ -21,6 +21,7 @@ do_install() {
 		wget
 		zsh
 		unzip
+		python3-pip
 	)
 
 	info "[system] Install packages"
