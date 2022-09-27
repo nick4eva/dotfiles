@@ -19,12 +19,12 @@ do_install() {
 
 do_configure() {
 	info "[asdf] Configure"
-	info "[asdf][configure] Add plugins"
-	asdf plugin add deno
+	source "${HOME}/.asdf/asdf.sh"
 	info "[asdf][configure] Create config file symlink"
 	ln -fs "$(pwd)/asdf/tool-versions" "${HOME}/.tool-versions"
+	info "[asdf][configure] Add plugins"
+	asdf plugin add deno
 	info "[asdf][configure] Installing tools"
-	source "${HOME}/.asdf/asdf.sh"
 	asdf install
 }
 
