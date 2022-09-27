@@ -25,6 +25,7 @@ do_configure() {
 	info "[asdf][configure] Add plugins"
 	asdf plugin add deno
 	asdf plugin add github-cli
+	asdf plugin add act
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
