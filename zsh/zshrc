@@ -23,6 +23,7 @@ plugins=(
     zsh-autosuggestions
     zsh-completions
     autoupdate
+    asdf
     # fzf-tab # fzf-tab should be the last plugin to bind "^I"
 )
 
