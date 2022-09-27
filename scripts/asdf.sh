@@ -24,6 +24,7 @@ do_configure() {
 	ln -fs "$(pwd)/asdf/tool-versions" "${HOME}/.tool-versions"
 	info "[asdf][configure] Add plugins"
 	asdf plugin add deno
+	asdf plugin add github-cli
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
