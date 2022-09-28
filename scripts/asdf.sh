@@ -27,6 +27,7 @@ do_configure() {
 	asdf plugin add github-cli
 	asdf plugin add act
 	asdf plugin add bat
+	asdf plugin add delta
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
