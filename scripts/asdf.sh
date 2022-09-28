@@ -29,6 +29,7 @@ do_configure() {
 	asdf plugin add bat
 	asdf plugin add delta
 	asdf plugin add dotnet
+	asdf plugin add nodejs
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
