@@ -16,7 +16,7 @@ system-configure: ## Create directories, install fonts, etc.
 git: ## Configure git
 	@./scripts/git.sh configure
 
-terminal: zsh ohmyzsh bat-configure fzf delta ripgrep shellcheck ## Setup the terminal
+terminal: zsh ohmyzsh bat-configure fzf delta-configure ripgrep shellcheck ## Setup the terminal
 zsh: ## Configure zsh
 	@./scripts/zsh.sh configure
 ohmyzsh: ohmyzsh-install ohmyzsh-configure ## Install and configure Oh My Zsh
@@ -28,9 +28,6 @@ bat-configure: ## Configure bat
 	@./scripts/bat.sh configure
 fzf: ## Install FZF
 	@./scripts/fzf.sh install
-delta: delta-install delta-configure ## Install and configure delta
-delta-install: ## Install delta
-	@./scripts/delta.sh install
 delta-configure: ## Configure delta
 	@./scripts/delta.sh configure
 ripgrep: ## Install ripgrep
