@@ -81,8 +81,6 @@ source ~/dotfiles/zsh/autoupdate.zsh
 # Load any extra settings
 test -f ~/dotfiles/zsh/extras && source ~/dotfiles/zsh/extras
 
-test -d ~/.asdf/plugins/dotnet-core && source ~/.asdf/plugins/dotnet-core/set-dotnet-home.zsh
-
 # Completion {{{2
 
 # set descriptions format to enable group support
