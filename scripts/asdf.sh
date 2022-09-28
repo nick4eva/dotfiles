@@ -28,6 +28,7 @@ do_configure() {
 	asdf plugin add act
 	asdf plugin add bat
 	asdf plugin add delta
+	asdf plugin add dotnet
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
