@@ -31,6 +31,7 @@ do_configure() {
 	asdf plugin add dotnet
 	asdf plugin add nodejs
 	asdf plugin add tflint
+	asdf plugin add powershell-core
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
