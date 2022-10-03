@@ -6,3 +6,4 @@ delta 0.14.0
 dotnet 6.0.401
 nodejs 16.17.1
 tflint 0.41.0
+powershell-core 7.2.6
