@@ -17,6 +17,10 @@ jobs:
 
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@1.1.0
+        with:
+          ignore_names: ./zsh/zshrc ./zsh/p10k.zsh
+        env:
+          SHELLCHECK_OPTS: -e SC1071
 
   test:
     runs-on: '${{ matrix.os }}'
