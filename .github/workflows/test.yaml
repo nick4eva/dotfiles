@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@1.1.0
+        uses: ludeeus/action-shellcheck@master
         with:
           ignore_paths: ./zsh/zshrc ./zsh/p10k.zsh
         env:
