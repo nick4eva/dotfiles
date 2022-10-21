@@ -20,7 +20,7 @@ jobs:
         with:
           ignore_paths: ./zsh/zshrc ./zsh/p10k.zsh
         env:
-          SHELLCHECK_OPTS: -e SC1071 -e SC1072 -e SC1073 -e SC2148 -e SC2296
+          SHELLCHECK_OPTS: -e SC1071 -e SC1091
 
   test:
     runs-on: '${{ matrix.os }}'
