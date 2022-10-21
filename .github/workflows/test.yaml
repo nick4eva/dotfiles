@@ -1,4 +1,5 @@
 name: Test
+
 on:
   push:
     branches:
@@ -6,7 +7,21 @@ on:
   pull_request:
     branches:
       - master
+
 jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          ignore_paths: ./zsh/zshrc ./zsh/p10k.zsh
+        env:
+          SHELLCHECK_OPTS: -e SC1071 -e SC1091
+
   test:
     runs-on: '${{ matrix.os }}'
     strategy:
@@ -16,7 +31,8 @@ jobs:
           - ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
       - name: Test
         run: make test
         env:

@@ -19,7 +19,8 @@ do_install() {
 do_configure() {
 	info "[neovim] Configure"
 	info "[neovim][configure] Set as default editor"
-	local nvim_path="$(type -P nvim)"
+	local nvim_path
+	nvim_path="$(type -P nvim)"
 	sudo update-alternatives --install /usr/bin/vi vi "$nvim_path" 60
 	sudo update-alternatives --set vi "$nvim_path"
 	sudo update-alternatives --install /usr/bin/vim vim "$nvim_path" 60
