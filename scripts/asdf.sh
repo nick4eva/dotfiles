@@ -32,6 +32,7 @@ do_configure() {
 	asdf plugin add nodejs
 	asdf plugin add tflint
 	asdf plugin add powershell-core
+	asdf plugin-add broot https://github.com/cmur2/asdf-broot.git
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
