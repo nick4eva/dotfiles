@@ -33,6 +33,7 @@ do_configure() {
 	asdf plugin add tflint
 	asdf plugin add powershell-core
 	asdf plugin-add broot https://github.com/cmur2/asdf-broot.git
+	asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
