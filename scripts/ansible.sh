@@ -5,16 +5,16 @@ set -e
 # ansible source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-ANSIBLE_VERSION="${ANSIBLE_VERSION:=2.12.8}"
+ANSIBLE_CORE_VERSION="${ANSIBLE_CORE_VERSION:=2.12.10}"
 
 do_install() {
-	if [[ "$(ansible --version 2>/dev/null)" == *"${ANSIBLE_VERSION}"* ]]; then
-		info "[ansible] ${ANSIBLE_VERSION} already installed"
+	if [[ "$(ansible --version 2>/dev/null)" == *"${ANSIBLE_CORE_VERSION}"* ]]; then
+		info "[ansible] ${ANSIBLE_CORE_VERSION} already installed"
 		return
 	fi
 
-	info "[ansible] Install ${ANSIBLE_VERSION}"
-	python3 -m pip install --user ansible-core=="${ANSIBLE_VERSION}"
+	info "[ansible] Install ${ANSIBLE_CORE_VERSION}"
+	python3 -m pip install --user ansible-core=="${ANSIBLE_CORE_VERSION}"
 }
 
 main() {
