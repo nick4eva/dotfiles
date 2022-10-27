@@ -45,8 +45,11 @@ ctop-configure: ## Configure ctop
 	@./scripts/ctop.sh configure
 tfsec: ## Install tfsec
 	@./scripts/tfsec.sh install
-ansible: ## Install Ansible
+ansible: ansible-core ansible-lint ## Install Ansible
+ansible-core: ## Install Ansible Core
 	@./scripts/ansible.sh install
+ansible-lint: ## Install Ansible Lint
+	@./scripts/ansible-lint.sh install
 
 neovim: tree-sitter neovim-install #neovim-configure ## Install and configure neovim and tree-sitter
 tree-sitter: ## Install tree-sitter
