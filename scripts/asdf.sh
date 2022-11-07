@@ -34,6 +34,7 @@ do_configure() {
 	asdf plugin add powershell-core
 	asdf plugin-add broot https://github.com/cmur2/asdf-broot.git
 	asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
+	asdf plugin-add k9s https://github.com/looztra/asdf-k9s
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
