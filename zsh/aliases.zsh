@@ -32,6 +32,9 @@ alias ggrepi="ggrep --ignore-case"
 alias gu="git stash && git pull && git stash pop || true"
 
 # docker
+alias dps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.Status}}\""
+alias dpse="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.Status}}\t{{.Image}}\t{{.Size}}\""
+
 docker-clean() {
     docker container prune -f && docker volume prune -f && docker network prune -f
 }
@@ -67,6 +70,7 @@ function _minutes_to_hex() {
 
 alias cls="clear"
 alias c="code ."
+alias dc="devcontainer ."
 alias fd="fdfind"
 alias pr="gh pr create --fill"
 alias prw="gh pr create --fill && gh pr checks --watch --interval 5"
@@ -74,6 +78,6 @@ alias checks="gh pr checks --watch --interval 5"
 alias deploy="gh pr comment -b 'deploy'"
 alias plan="gh pr comment -b 'plan'"
 alias apply="gh pr comment -b 'apply'"
-alias up="g co master && g pull"
+alias up="gcm && gl"
 alias ctop="nocorrect ctop"
 alias prm="gh pr merge -m -d"
