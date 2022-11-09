@@ -1,12 +1,13 @@
-deno            1.25.4
-github-cli      2.19.0
+deno            1.27.2
+github-cli      2.20.0
 act             0.2.31
 bat             0.22.1
 delta           0.14.0
 dotnet          6.0.401
 nodejs          16.17.1
 tflint          0.42.2
-powershell-core 7.2.7
+powershell-core 7.3.0
 broot           1.16.1
 poetry          1.2.2
 k9s             0.26.7
+glow            1.4.1
