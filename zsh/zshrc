@@ -97,3 +97,11 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w 
 
 # To customize prompt, run `p10k configure` or edit ~/.oh-my-zsh/custom/p10k.zsh.
 [[ ! -f ~/.oh-my-zsh/custom/p10k.zsh ]] || source ~/.oh-my-zsh/custom/p10k.zsh
+
+source /home/mykola/.config/broot/launcher/bash/br
+
+# pnpm
+export PNPM_HOME="/home/mykola/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+

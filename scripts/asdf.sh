@@ -36,6 +36,10 @@ do_configure() {
 	asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
 	asdf plugin-add k9s https://github.com/looztra/asdf-k9s
 	asdf plugin add glow https://github.com/grimoh/asdf-glow.git
+	asdf plugin add stylua
+	asdf plugin add lazygit
+	asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
+	asdf plugin add editorconfig-checker
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
