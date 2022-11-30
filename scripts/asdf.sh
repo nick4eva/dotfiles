@@ -40,6 +40,7 @@ do_configure() {
 	asdf plugin add lazygit
 	asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
 	asdf plugin add editorconfig-checker
+  asdf plugin add actionlint
 	info "[asdf][configure] Installing tools"
 	asdf install
 }
