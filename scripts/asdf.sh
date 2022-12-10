@@ -41,8 +41,12 @@ do_configure() {
 	asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
 	asdf plugin add editorconfig-checker
   asdf plugin add actionlint
+  asdf plugin add hadolint
 	info "[asdf][configure] Installing tools"
 	asdf install
+	# info "[asdf][configure] Plugins post-install configuration"
+	# info "[asdf][configure][github-cli] Install gh cli extensions"
+  #  gh extension install kavinvalli/gh-repo-fzf
 }
 
 main() {
