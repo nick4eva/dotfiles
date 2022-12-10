@@ -44,9 +44,9 @@ do_configure() {
   asdf plugin add hadolint
 	info "[asdf][configure] Installing tools"
 	asdf install
-	info "[asdf][configure] Plugins post-install configuration"
-	info "[asdf][configure][github-cli] Install gh cli extensions"
-  gh extension install kavinvalli/gh-repo-fzf
+	# info "[asdf][configure] Plugins post-install configuration"
+	# info "[asdf][configure][github-cli] Install gh cli extensions"
+  #  gh extension install kavinvalli/gh-repo-fzf
 }
 
 main() {
