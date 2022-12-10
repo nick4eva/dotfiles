@@ -29,3 +29,14 @@ jobs:
           ignore_paths: ./zsh/zshrc ./zsh/p10k.zsh
         env:
           SHELLCHECK_OPTS: -e SC1071 -e SC1091
+  markdownlint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run MarkdownLint
+        uses: reviewdog/action-markdownlint@v0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
