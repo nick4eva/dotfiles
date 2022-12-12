@@ -22,6 +22,7 @@ do_install() {
 		zsh
 		unzip
 		python3-pip
+    stow
 	)
 
 	info "[system] Install packages"
