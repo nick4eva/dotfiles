@@ -2,7 +2,7 @@
 
 set -e
 
-# ansible source=../scripts/util.sh
+# shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
 ANSIBLE_CORE_VERSION="${ANSIBLE_CORE_VERSION:=2.12.10}"

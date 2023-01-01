@@ -2,10 +2,10 @@
 
 set -e
 
-# ansible source=../scripts/util.sh
+# shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-ANSIBLE_LINT_VERSION="${ANSIBLE_LINT_VERSION:=6.8.2}"
+ANSIBLE_LINT_VERSION="${ANSIBLE_LINT_VERSION:=6.8.7}"
 
 do_install() {
 	if [[ "$(ansible-lint --version 2>/dev/null)" == *"${ANSIBLE_LINT_VERSION}"* ]]; then
