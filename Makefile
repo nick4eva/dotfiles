@@ -16,7 +16,7 @@ system-configure: ## Create directories, install fonts, etc.
 git: ## Configure git
 	@./scripts/git.sh configure
 
-terminal: zsh ohmyzsh bat-configure fzf delta-configure ripgrep shellcheck lazygit win32yank ## Setup the terminal
+terminal: zsh ohmyzsh bat-configure lsd fzf delta-configure ripgrep shellcheck lazygit win32yank ## Setup the terminal
 zsh: ## Configure zsh
 	@./scripts/zsh.sh configure
 ohmyzsh: ohmyzsh-install ohmyzsh-configure ## Install and configure Oh My Zsh
@@ -26,6 +26,8 @@ ohmyzsh-configure: ## Configure Oh My Zsh
 	@./scripts/ohmyzsh.sh configure
 bat-configure: ## Configure bat
 	@./scripts/bat.sh configure
+lsd: ## Install lsd
+	@./scripts/lsd.sh install
 fzf: ## Install FZF
 	@./scripts/fzf.sh install
 delta-configure: ## Configure delta

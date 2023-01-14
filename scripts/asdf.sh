@@ -2,10 +2,10 @@
 
 set -e
 
-# asdf source=../scripts/util.sh
+# shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-ASDF_VERSION="${ASDF_VERSION:=0.10.2}"
+ASDF_VERSION="${ASDF_VERSION:=0.11.1}"
 
 do_install() {
 	if [[ "$(asdf --version 2>/dev/null)" == *"${ASDF_VERSION}"* ]]; then
@@ -32,9 +32,9 @@ do_configure() {
 	asdf plugin add nodejs
 	asdf plugin add tflint
 	asdf plugin add powershell-core
-	asdf plugin-add broot https://github.com/cmur2/asdf-broot.git
-	asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
-	asdf plugin-add k9s https://github.com/looztra/asdf-k9s
+	asdf plugin add broot https://github.com/cmur2/asdf-broot.git
+	asdf plugin add poetry https://github.com/asdf-community/asdf-poetry.git
+	asdf plugin add k9s https://github.com/looztra/asdf-k9s
 	asdf plugin add glow https://github.com/grimoh/asdf-glow.git
 	asdf plugin add stylua
 	asdf plugin add lazygit
