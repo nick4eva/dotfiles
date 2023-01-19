@@ -2,7 +2,7 @@
 
 Inspired by <https://github.com/georgijd/dotfiles>
 
-[![Build Status](https://github.com/nick4eva/dotfiles/actions/workflows/test.yaml/badge.svg)](https://github.com/nick4eva/dotfiles/actions/workflows/test.yaml)
+[![Build Status](https://github.com/nick4eva/dotfiles/actions/workflows/test.yaml/badge.svg)](https://github.com/nick4eva/dotfiles/actions/workflows/test.yml)
 
 ## How to install
 
@@ -13,4 +13,3 @@ make
 ```
 
 > For more information run `make help`
-
