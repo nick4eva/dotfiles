@@ -105,3 +105,5 @@ export PNPM_HOME="/home/mykola/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
+eval "$(navi widget zsh)"
+
