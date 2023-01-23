@@ -16,7 +16,7 @@ system-configure: ## Create directories, install fonts, etc.
 git: ## Configure git
 	@./scripts/git.sh configure
 
-terminal: zsh ohmyzsh bat-configure lsd fzf delta-configure ripgrep shellcheck lazygit win32yank ## Setup the terminal
+terminal: zsh ohmyzsh bat-configure lsd fzf delta-configure ripgrep shellcheck lazygit win32yank navi ## Setup the terminal
 zsh: ## Configure zsh
 	@./scripts/zsh.sh configure
 ohmyzsh: ohmyzsh-install ohmyzsh-configure ## Install and configure Oh My Zsh
@@ -40,6 +40,8 @@ lazygit: ## Configure lazygit
 	@./scripts/lazygit.sh configure
 win32yank: ## Install win32yank
 	@./scripts/win32yank.sh install
+navi: ## Install navi
+	@./scripts/navi.sh install
 
 devops: awscli ctop tfsec ansible #kubectl istioctl ## Install and configure devops tools
 awscli: ## Install awscli
