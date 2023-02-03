@@ -6,7 +6,7 @@ set -e
 source "$(pwd)/scripts/util.sh"
 
 NVM_DIR="${HOME}/.nvm"
-NVIM_VERSION="${NVIM_VERSION:=0.7.2}"
+NVIM_VERSION="${NVIM_VERSION:=0.8.3}"
 
 do_install() {
 	info "[neovim] Install"
@@ -31,6 +31,9 @@ do_configure() {
 	info "[neovim][configure] Create configuration directory symlink"
 	rm -rf "${XDG_CONFIG_HOME}/nvim" && mkdir -p "${XDG_CONFIG_HOME}"
 	ln -fs "$(pwd)/nvim" "${XDG_CONFIG_HOME}/nvim"
+
+	info "[neovim][configure] Install pynvim package"
+	python3 -m pip install --quiet pynvim==0.4.3 greenlet msgpack --user
 
 	info "[neovim][configure] Install the neovim package for languages"
 	info "[neovim][configure][languages] Python"
