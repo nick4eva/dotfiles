@@ -1,10 +1,10 @@
-deno            1.29.4
-github-cli      2.22.1
+deno            1.31.1
+github-cli      2.23.0
 act             0.2.42
 bat             0.22.1
 delta           0.15.1
 dotnet          6.0.405
-nodejs          16.17.1
+nodejs          16.19.0
 tflint          0.44.1
 powershell-core 7.3.0
 broot           1.19.0
@@ -17,3 +17,5 @@ lazydocker      0.20.0
 editorconfig-checker 2.6.0
 actionlint      1.6.23
 hadolint        2.12.0
+dust            0.8.4
+exa             0.10.1
