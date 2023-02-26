@@ -5,7 +5,7 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-ASDF_VERSION="${ASDF_VERSION:=0.11.1}"
+ASDF_VERSION="${ASDF_VERSION:=0.11.2}"
 
 do_install() {
 	if [[ "$(asdf --version 2>/dev/null)" == *"${ASDF_VERSION}"* ]]; then
@@ -40,13 +40,15 @@ do_configure() {
 	asdf plugin add lazygit
 	asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
 	asdf plugin add editorconfig-checker
-  asdf plugin add actionlint
-  asdf plugin add hadolint
+	asdf plugin add actionlint
+	asdf plugin add hadolint
+	asdf plugin add dust
+	asdf plugin add exa
 	info "[asdf][configure] Installing tools"
 	asdf install
 	# info "[asdf][configure] Plugins post-install configuration"
 	# info "[asdf][configure][github-cli] Install gh cli extensions"
-  #  gh extension install kavinvalli/gh-repo-fzf
+	#  gh extension install kavinvalli/gh-repo-fzf
 }
 
 main() {
