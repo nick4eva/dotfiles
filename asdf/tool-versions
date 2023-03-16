@@ -1,6 +1,6 @@
 deno            1.31.3
 github-cli      2.24.3
-act             0.2.42
+act             0.2.43
 bat             0.22.1
 delta           0.15.1
 dotnet          6.0.406
