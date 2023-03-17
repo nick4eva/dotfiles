@@ -5,7 +5,7 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-ASDF_VERSION="${ASDF_VERSION:=0.11.2}"
+ASDF_VERSION="${ASDF_VERSION:=0.11.3}"
 
 do_install() {
 	if [[ "$(asdf --version 2>/dev/null)" == *"${ASDF_VERSION}"* ]]; then
