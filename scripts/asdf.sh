@@ -44,6 +44,9 @@ do_configure() {
 	asdf plugin add hadolint
 	asdf plugin add dust
 	asdf plugin add exa
+	asdf plugin add jsonnet
+	asdf plugin add jb
+	asdf plugin add pint
 	info "[asdf][configure] Installing tools"
 	asdf install
 	# info "[asdf][configure] Plugins post-install configuration"
