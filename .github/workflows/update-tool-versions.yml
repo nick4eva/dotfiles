@@ -20,10 +20,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: Copy asdf/tool-versions to .tool-versions
         run: cp asdf/tool-versions .tool-versions
+
       - name: Install asdf
         uses: asdf-vm/actions/install@v2
+
       - name: Configure asdf plugins
         run: |
           asdf plugin add deno
@@ -35,13 +38,8 @@ jobs:
           asdf plugin add nodejs
           asdf plugin add tflint
           asdf plugin add powershell-core
-          asdf plugin add broot https://github.com/cmur2/asdf-broot.git
-          asdf plugin add poetry https://github.com/asdf-community/asdf-poetry.git
-          asdf plugin add k9s https://github.com/looztra/asdf-k9s
-          asdf plugin add glow https://github.com/grimoh/asdf-glow.git
           asdf plugin add stylua
           asdf plugin add lazygit
-          asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
           asdf plugin add editorconfig-checker
           asdf plugin add actionlint
           asdf plugin add hadolint
@@ -56,5 +54,9 @@ jobs:
         uses: ericcornelissen/tool-versions-update-action/commit@v0
         with:
           not: powershell-core
-      - name: Log tooling changes
-        run: git diff .tool-versions
+          plugins: |
+            broot https://github.com/cmur2/asdf-broot.git
+            poetry https://github.com/asdf-community/asdf-poetry.git
+            k9s https://github.com/looztra/asdf-k9s
+            glow https://github.com/grimoh/asdf-glow.git
+            lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
