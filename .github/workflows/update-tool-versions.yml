@@ -1,0 +1,28 @@
+name: Tooling
+
+on:
+  schedule:
+    - cron: "0 0 * * MON"
+  workflow_dispatch: ~
+  pull_request:
+    branches:
+      - master
+
+env:
+  ASDF_DEFAULT_TOOL_VERSIONS_FILENAME: asdf/tool-versions
+
+jobs:
+  tooling:
+    name: Update tooling
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update tooling
+        uses: ericcornelissen/tool-versions-update-action/commit@v0
+        with:
+          not: powershell-core, broot, lazydocker
