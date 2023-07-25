@@ -8,8 +8,8 @@ on:
     branches:
       - master
 
-env:
-  ASDF_DEFAULT_TOOL_VERSIONS_FILENAME: asdf/tool-versions
+# env:
+#   ASDF_DEFAULT_TOOL_VERSIONS_FILENAME: asdf/tool-versions
 
 jobs:
   tooling:
@@ -27,36 +27,30 @@ jobs:
       - name: Install asdf
         uses: asdf-vm/actions/install@v2
 
-      - name: Configure asdf plugins
-        run: |
-          asdf plugin add deno
-          asdf plugin add github-cli
-          asdf plugin add act
-          asdf plugin add bat
-          asdf plugin add delta
-          asdf plugin add dotnet
-          asdf plugin add nodejs
-          asdf plugin add tflint
-          asdf plugin add powershell-core
-          asdf plugin add stylua
-          asdf plugin add lazygit
-          asdf plugin add editorconfig-checker
-          asdf plugin add actionlint
-          asdf plugin add hadolint
-          asdf plugin add tmux
-          asdf plugin add dust
-          asdf plugin add exa
-          asdf plugin add jsonnet
-          asdf plugin add jb
-          asdf plugin add pint
+    #   - name: Configure asdf plugins
+    #     run: |
+    #       asdf plugin add deno
+    #       asdf plugin add github-cli
+    #       asdf plugin add act
+    #       asdf plugin add bat
+    #       asdf plugin add delta
+    #       asdf plugin add dotnet
+    #       asdf plugin add nodejs
+    #       asdf plugin add tflint
+    #       asdf plugin add powershell-core
+    #       asdf plugin add stylua
+    #       asdf plugin add lazygit
+    #       asdf plugin add editorconfig-checker
+    #       asdf plugin add actionlint
+    #       asdf plugin add hadolint
+    #       asdf plugin add tmux
+    #       asdf plugin add dust
+    #       asdf plugin add exa
+    #       asdf plugin add jsonnet
+    #       asdf plugin add jb
+    #       asdf plugin add pint
 
       - name: Update tooling
         uses: ericcornelissen/tool-versions-update-action/commit@v0
         with:
-          not: powershell-core
-          plugins: |
-            broot https://github.com/cmur2/asdf-broot.git
-            poetry https://github.com/asdf-community/asdf-poetry.git
-            k9s https://github.com/looztra/asdf-k9s
-            glow https://github.com/grimoh/asdf-glow.git
-            lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
+          not: powershell-core, broot, lazydocker
