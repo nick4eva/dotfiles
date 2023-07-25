@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Copy asdf/tool-versions to .tool-versions
+        run: cp asdf/tool-versions .tool-versions
       - name: Install asdf
         uses: asdf-vm/actions/install@v2
       - name: Configure asdf plugins
