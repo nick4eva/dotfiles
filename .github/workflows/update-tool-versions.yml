@@ -1,0 +1,55 @@
+name: Tooling
+
+on:
+  schedule:
+    - cron: "0 0 * * MON"
+  workflow_dispatch: ~
+
+env:
+  ASDF_DEFAULT_TOOL_VERSIONS_FILENAME: asdf/tool-versions
+
+jobs:
+  tooling:
+    name: Update tooling
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install asdf
+        uses: asdf-vm/actions/install@v2
+      - name: Configure asdf plugins
+        run: |
+          asdf plugin add deno
+          asdf plugin add github-cli
+          asdf plugin add act
+          asdf plugin add bat
+          asdf plugin add delta
+          asdf plugin add dotnet
+          asdf plugin add nodejs
+          asdf plugin add tflint
+          asdf plugin add powershell-core
+          asdf plugin add broot https://github.com/cmur2/asdf-broot.git
+          asdf plugin add poetry https://github.com/asdf-community/asdf-poetry.git
+          asdf plugin add k9s https://github.com/looztra/asdf-k9s
+          asdf plugin add glow https://github.com/grimoh/asdf-glow.git
+          asdf plugin add stylua
+          asdf plugin add lazygit
+          asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
+          asdf plugin add editorconfig-checker
+          asdf plugin add actionlint
+          asdf plugin add hadolint
+          asdf plugin add tmux
+          asdf plugin add dust
+          asdf plugin add exa
+          asdf plugin add jsonnet
+          asdf plugin add jb
+          asdf plugin add pint
+
+      - name: Update tooling
+        uses: ericcornelissen/tool-versions-update-action/commit@v0
+        with:
+          not: powershell-core
+      - name: Log tooling changes
+        run: git diff .tool-versions
