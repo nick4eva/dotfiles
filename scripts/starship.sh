@@ -6,11 +6,9 @@ set -e
 source "$(pwd)/scripts/util.sh"
 
 do_configure() {
-	info "[zsh] Install"
-	sudo apt-get install -qq -y zsh
-	info "[zsh] Configure"
-	info "[zsh][configure] Set as default shell"
-	chsh -s "$(which zsh)"
+	info "[starship] Configure"
+	info "[starship][configure] Create config files symlinks"
+	ln -fs "$(pwd)/starship/starship.toml" "${XDG_CONFIG_HOME}/starship.toml"
 }
 
 main() {

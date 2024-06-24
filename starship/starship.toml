@@ -1,0 +1,71 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# A minimal left prompt
+format = """\
+$custom\
+$directory\
+$git_branch\
+$git_status\
+\n\
+$character\
+"""
+
+# move the rest of the prompt to the right
+right_format = """$cmd_duration $aws $kubernetes $time"""
+
+[git_branch]
+symbol = " "
+format = '[$symbol$branch]($style)'
+style = 'bold green'
+#ignore_branches = ['master', 'main']
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = 'bold blue'
+format = '[($time)]($style)'
+
+[aws]
+format = '[($profile)]($style)'
+style = 'bold blue'
+[aws.region_aliases]
+ap-southeast-2 = 'apse2'
+us-east-1 = 'use1'
+eu-west-1 = 'euw1'
+eu-central-1 = 'euc1'
+
+[git_status]
+format = '([$conflicted$stashed$deleted$renamed$modified$staged$untracked$ahead_behind]($style))'
+stashed = ' ⚑${count}'
+conflicted = ' !${count}'
+deleted = ' ✘${count}'
+renamed = ' »${count}'
+modified = ' ✹${count}'
+staged = ' ●${count}'
+untracked = ' ?${count}'
+ahead = ' ⇡${count}'
+diverged = ' ⇕⇡${ahead_count} ⇣${behind_count}'
+behind = ' ⇣${count}'
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context ( \($namespace\))]($style)'
+symbol = '󱃾 '
+# symbol = '⎈ '
+style = 'green'
+
+[[kubernetes.contexts]]
+context_pattern = ".*/(?P<cluster>.*)"
+context_alias = "$cluster"
+#[kubernetes.context_aliases]
+#'.*/(?P<cluster>.+)' = '$cluster'
+
+[cmd_duration]
+min_time = 500
+format = " [ $duration]($style)"
+
+[custom.devbox]
+format = '[$symbol]($style)devbox> '
+symbol = '📦 '
+detect_files = ["devbox.json"]

@@ -1,13 +1,10 @@
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zmodload zsh/zprof
+fi
+
 # vim: foldmethod=marker
 # Oh-My-Zsh {{{1
 export ZSH="${HOME}/.oh-my-zsh"
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 plugins=(
     aws
@@ -29,9 +26,6 @@ plugins=(
 
 # Settings that must be applid before loading Oh-My-Zsh {{{2
 
-# Set the theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 # Use case-sensitive completion
 CASE_SENSITIVE="true"
 
@@ -42,11 +36,13 @@ DISABLE_MAGIC_FUNCTIONS=true
 
 # Load oh-my-zsh
 source "${ZSH}/oh-my-zsh.sh"
+# configure oh-my-zsh plugins
+export YSU_HARDCORE=1
 
 # ZSH {{{1
 
 # Apply sensisble zsh settings
-source ~/dotfiles/zsh/zshopt
+source $HOME/dotfiles/zsh/zshopt
 
 # Bind C+Space to accept the current suggestion
 bindkey '^ ' autosuggest-accept
@@ -67,19 +63,19 @@ esac
 
 # Source files {{{2
 # Load aliases
-source ~/dotfiles/zsh/aliases.zsh
+source $HOME/dotfiles/zsh/aliases.zsh
 
 # Load functions
-source ~/dotfiles/zsh/functions.zsh
+source $HOME/dotfiles/zsh/functions.zsh
 
 # Apply FZF configuration
-source ~/dotfiles/zsh/fzf.zsh
+source $HOME/dotfiles/zsh/fzf.zsh
 
 # Apply autoupdate configuration
-source ~/dotfiles/zsh/autoupdate.zsh
+source $HOME/dotfiles/zsh/autoupdate.zsh
 
 # Load any extra settings
-test -f ~/dotfiles/zsh/extras && source ~/dotfiles/zsh/extras
+test -f $HOME/dotfiles/zsh/extras && source $HOME/dotfiles/zsh/extras
 
 # Completion {{{2
 
@@ -94,16 +90,12 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w 
 
 # Reload the completions (uncomment if zsh-completions don't work)
 # autoload -U compinit && compinit
-
-# To customize prompt, run `p10k configure` or edit ~/.oh-my-zsh/custom/p10k.zsh.
-[[ ! -f ~/.oh-my-zsh/custom/p10k.zsh ]] || source ~/.oh-my-zsh/custom/p10k.zsh
-
-source /home/mykola/.config/broot/launcher/bash/br
-
-# pnpm
-export PNPM_HOME="/home/mykola/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
+eval "$(devbox global shellenv --init-hook)"
 eval "$(navi widget zsh)"
+eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
+eval "$(zoxide init zsh)"
 
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zprof
+fi

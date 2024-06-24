@@ -25,9 +25,8 @@ do_configure() {
 		# ["plugins/fast-syntax-highlighting"]="https://github.com/z-shell/fast-syntax-highlighting"
 		["plugins/zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions"
 		["plugins/zsh-completions"]="https://github.com/zsh-users/zsh-completions"
-		["plugins/fzf-tab"]="https://github.com/Aloxaf/fzf-tab"
+		# ["plugins/fzf-tab"]="https://github.com/Aloxaf/fzf-tab"
 		["plugins/you-should-use"]="https://github.com/MichaelAquilina/zsh-you-should-use"
-		["themes/powerlevel10k"]="https://github.com/romkatv/powerlevel10k"
 		["plugins/autoupdate"]="https://github.com/TamCore/autoupdate-oh-my-zsh-plugins"
 	)
 	for path in "${!plugins[@]}"; do
@@ -37,7 +36,6 @@ do_configure() {
 	done
 
 	info "[ohmyzsh][configure] Create symlinks"
-	ln -fs "$(pwd)/zsh/p10k.zsh" "${ZSH_CUSTOM}/p10k.zsh"
 	ln -fs "$(pwd)/zsh/autoupdate.zsh" "${ZSH_CUSTOM}/autoupdate.zsh"
 	ln -fs "$(pwd)/zsh/aliases.zsh" "${ZSH_CUSTOM}/aliases.zsh"
 	ln -fs "$(pwd)/zsh/functions.zsh" "${ZSH_CUSTOM}/functions.zsh"

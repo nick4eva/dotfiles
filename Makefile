@@ -3,7 +3,7 @@ include test.mk
 .DEFAULT_GOAL := all
 .PHONY: git
 
-all: system git asdf terminal devops neovim ## Install and configure everything (default)
+all: system nix devbox terminal #devops neovim ## Install and configure everything (default)
 help: ## Display help
 	@grep -hE '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -16,7 +16,14 @@ system-configure: ## Create directories, install fonts, etc.
 git: ## Configure git
 	@./scripts/git.sh configure
 
-terminal: zsh ohmyzsh bat-configure lsd fzf delta-configure ripgrep shellcheck lazygit win32yank navi ## Setup the terminal
+terminal: zsh ohmyzsh git starship-configure bat-configure delta-configure #lsd fzf ripgrep shellcheck lazygit win32yank navi ## Setup the terminal
+nix: ## Nix install
+	@./scripts/nix.sh install
+devbox: devbox-install devbox-configure ## Install and configure devbox
+devbox-install: ## Devbox install
+	@./scripts/devbox.sh install
+devbox-configure: ## Devbox configure
+	@./scripts/devbox.sh configure
 zsh: ## Configure zsh
 	@./scripts/zsh.sh configure
 ohmyzsh: ohmyzsh-install ohmyzsh-configure ## Install and configure Oh My Zsh
@@ -24,6 +31,8 @@ ohmyzsh-install: ## Install Oh My Zsh
 	@./scripts/ohmyzsh.sh install
 ohmyzsh-configure: ## Configure Oh My Zsh
 	@./scripts/ohmyzsh.sh configure
+starship-configure: ## Configure starship
+	@./scripts/starship.sh configure
 bat-configure: ## Configure bat
 	@./scripts/bat.sh configure
 lsd: ## Install lsd
@@ -67,8 +76,8 @@ neovim-install: ## Install neovim
 # neovim-configure: ## Configure neovim
 # 	@./scripts/neovim.sh configure
 
-asdf: asdf-install asdf-configure ## Install and configure asdf
-asdf-install:
-	@./scripts/asdf.sh install
-asdf-configure:
-	@./scripts/asdf.sh configure
+# asdf: asdf-install asdf-configure ## Install and configure asdf
+# asdf-install:
+# 	@./scripts/asdf.sh install
+# asdf-configure:
+# 	@./scripts/asdf.sh configure

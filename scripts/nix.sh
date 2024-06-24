@@ -5,17 +5,23 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-do_configure() {
-	info "[zsh] Install"
-	sudo apt-get install -qq -y zsh
-	info "[zsh] Configure"
-	info "[zsh][configure] Set as default shell"
-	chsh -s "$(which zsh)"
+do_install() {
+	if is_installed nix; then
+		info "[nix] Already installed"
+		return
+	fi
+
+	info "[nix] Install"
+	sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 }
 
-main() {
+	main() {
 	command=$1
 	case $command in
+	"install")
+		shift
+		do_install "$@"
+		;;
 	"configure")
 		shift
 		do_configure "$@"
