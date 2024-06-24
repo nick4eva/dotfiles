@@ -26,7 +26,7 @@ jobs:
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
         with:
-          ignore_paths: ./zsh/zshrc ./zsh/p10k.zsh
+          ignore_paths: ./zsh/zshrc
         env:
           SHELLCHECK_OPTS: -e SC1071 -e SC1091
   markdownlint:
