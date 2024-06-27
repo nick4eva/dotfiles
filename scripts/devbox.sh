@@ -5,8 +5,6 @@ set -e
 # shellcheck source=../scripts/util.sh
 source "$(pwd)/scripts/util.sh"
 
-FORCE=1 # needed to install devbox via script
-
 do_install() {
 	if is_installed devbox; then
 		info "[devbox] Already installed. To update use: devbox version update"

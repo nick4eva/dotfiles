@@ -13,6 +13,7 @@ do_install() {
 		fontconfig
 		tree
 		unzip
+		curl
 	)
 
 	info "[system] Install packages"
