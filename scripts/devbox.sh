@@ -19,6 +19,8 @@ do_install() {
 
 do_configure() {
 	info "[devbox] Configure"
+	info "[devbox][configure] Create dir"
+	mkdir -p "$HOME/.local/share/devbox/global/default"
 	info "[devbox][configure] Create symlinks"
 	ln -fs "$(pwd)/devbox/devbox.json" "$HOME/.local/share/devbox/global/default/devbox.json"
 	devbox global install
