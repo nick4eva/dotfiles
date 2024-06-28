@@ -11,6 +11,7 @@ do_install() {
 		return
 	fi
 
+	bash
 	info "[devbox] Install"
 	bash -c "$(curl -fsSL https://get.jetify.com/devbox)" "" --force
 }
