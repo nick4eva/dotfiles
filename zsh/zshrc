@@ -27,7 +27,7 @@ plugins=(
 # Settings that must be applid before loading Oh-My-Zsh {{{2
 
 # Use case-sensitive completion
-CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
 # Fix slow paste
 DISABLE_MAGIC_FUNCTIONS=true
