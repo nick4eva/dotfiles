@@ -16,7 +16,7 @@ system-configure: ## Create directories, install fonts, etc.
 git: ## Configure git
 	@./scripts/git.sh configure
 
-terminal: zsh ohmyzsh git starship-configure bat-configure delta-configure #lsd fzf ripgrep shellcheck lazygit win32yank navi ## Setup the terminal
+terminal: zsh ohmyzsh git starship-configure bat-configure delta-configure direnv-configure #lsd fzf ripgrep shellcheck lazygit win32yank navi ## Setup the terminal
 nix: ## Nix install
 	@./scripts/nix.sh install
 devbox: devbox-install devbox-configure ## Install and configure devbox
@@ -41,6 +41,8 @@ fzf: ## Install FZF
 	@./scripts/fzf.sh install
 delta-configure: ## Configure delta
 	@./scripts/delta.sh configure
+direnv-configure: ## Configure direnv
+	@./scripts/direnv.sh configure
 ripgrep: ## Install ripgrep
 	@./scripts/ripgrep.sh install
 shellcheck: ## Install shellcheck
