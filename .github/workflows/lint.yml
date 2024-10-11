@@ -10,30 +10,36 @@ on:
 
 jobs:
   actionlint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          show-progress: false
 
       - name: Run ActionLint
         uses: reviewdog/action-actionlint@v1
   shellcheck:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          show-progress: false
 
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
         with:
-          ignore_paths: ./zsh/zshrc ./zsh/p10k.zsh
+          ignore_paths: ./zsh/zshrc
         env:
           SHELLCHECK_OPTS: -e SC1071 -e SC1091
   markdownlint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          show-progress: false
 
       - name: Run MarkdownLint
         uses: reviewdog/action-markdownlint@v0
@@ -41,10 +47,12 @@ jobs:
           reporter: github-pr-review
 
   hadolint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          show-progress: false
 
       - name: Run Hadolint
         uses: reviewdog/action-hadolint@v1

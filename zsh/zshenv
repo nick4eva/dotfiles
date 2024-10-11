@@ -26,6 +26,7 @@ export GPG_TTY=${TTY}
 # FZF
 export FZF_DEFAULT_COMMAND='fdfind . $HOME'
 export FZF_DEFAULT_OPTS="--bind 'ctrl-v:execute(vim {})+abort,?:toggle-preview,alt-a:select-all,alt-d:deselect-all' --tiebreak=index --cycle --preview-window right:50%:border:wrap"
+# apply color scheme, it can be customized via https://minsw.github.io/fzf-color-picker/
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --color=dark,fg:7,bg:-1,hl:5,fg+:15,bg+:8,hl+:13,info:2,prompt:4,pointer:1,marker:3,spinner:4,header:4"
 export FZF_CTRL_R_OPTS="--layout=reverse --preview-window hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

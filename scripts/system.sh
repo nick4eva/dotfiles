@@ -10,24 +10,14 @@ FONTS_DIR="$HOME/.local/share/fonts"
 do_install() {
 	local packages=(
 		build-essential
-		curl
-		fd-find
 		fontconfig
-		git
-		jq
-		tig
-		tmux
 		tree
-		wget
-		zsh
 		unzip
-		python3-pip
-    stow
+		curl
 	)
 
 	info "[system] Install packages"
 	export DEBIAN_FRONTEND=noninteractive
-	sudo apt-add-repository -y ppa:git-core/ppa
 	sudo apt-get update -qq
 	sudo apt-get install -qq -y "${packages[@]}"
 }
