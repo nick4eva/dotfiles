@@ -1,9 +1,9 @@
 include test.mk
 
 .DEFAULT_GOAL := all
-.PHONY: git
+.PHONY: git zsh
 
-all: system nix devbox terminal #devops neovim ## Install and configure everything (default)
+all: system nix zsh devbox terminal #devops neovim ## Install and configure everything (default)
 help: ## Display help
 	@grep -hE '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
@@ -16,7 +16,7 @@ system-configure: ## Create directories, install fonts, etc.
 git: ## Configure git
 	@./scripts/git.sh configure
 
-terminal: zsh ohmyzsh git starship-configure bat-configure delta-configure direnv-configure #lsd fzf ripgrep shellcheck lazygit win32yank navi ## Setup the terminal
+terminal: ohmyzsh git starship-configure bat-configure delta-configure direnv-configure #lsd fzf ripgrep shellcheck lazygit win32yank navi ## Setup the terminal
 nix: ## Nix install
 	@./scripts/nix.sh install
 devbox: devbox-install devbox-configure ## Install and configure devbox

@@ -18,10 +18,16 @@ do_install() {
 do_configure() {
 	info "[devbox] Configure"
 	info "[devbox][configure] Create dir"
-	mkdir -p "$HOME/.local/share/devbox/global/default"
+	DEVBOX_GLOBAL_DIR="$HOME/.local/share/devbox/global/default"
+	mkdir -p "$DEVBOX_GLOBAL_DIR"
 	info "[devbox][configure] Create symlinks"
-	ln -fs "$(pwd)/devbox/devbox.json" "$HOME/.local/share/devbox/global/default/devbox.json"
+	ln -fs "$(pwd)/devbox/devbox.json" "$DEVBOX_GLOBAL_DIR/devbox.json"
+	# echo "eval '$(devbox global shellenv)'" >> ~/.zshrc
+	# source ~/.zshrc
+	# temporarily add the global packages to the current shell (this is already configured in oh-my-zsh)
+	source <(devbox global shellenv --init-hook)
 	devbox global install
+	refresh-global
 }
 
 main() {
