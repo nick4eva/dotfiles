@@ -1,7 +1,7 @@
 include test.mk
 
 .DEFAULT_GOAL := all
-.PHONY: git
+.PHONY: git tmux
 
 all: system git asdf terminal devops neovim ## Install and configure everything (default)
 help: ## Display help
@@ -16,7 +16,7 @@ system-configure: ## Create directories, install fonts, etc.
 git: ## Configure git
 	@./scripts/git.sh configure
 
-terminal: zsh ohmyzsh bat-configure lsd fzf delta-configure ripgrep shellcheck lazygit win32yank navi ## Setup the terminal
+terminal: zsh ohmyzsh bat-configure lsd fzf delta-configure ripgrep shellcheck lazygit win32yank navi tmux ## Setup the terminal
 zsh: ## Configure zsh
 	@./scripts/zsh.sh configure
 ohmyzsh: ohmyzsh-install ohmyzsh-configure ## Install and configure Oh My Zsh
@@ -42,6 +42,11 @@ win32yank: ## Install win32yank
 	@./scripts/win32yank.sh install
 navi: ## Install navi
 	@./scripts/navi.sh install
+tmux: tmux-install tmux-configure ## Install and configure Oh my tmux!
+tmux-install: ## Install Oh my tmux!
+	@./scripts/tmux.sh install
+tmux-configure: ## Configure tmux
+	@./scripts/tmux.sh configure
 
 devops: awscli ctop tfsec ansible #kubectl istioctl ## Install and configure devops tools
 awscli: ## Install awscli
