@@ -27,14 +27,11 @@ do_install() {
 
 	info "[system] Install packages"
 	export DEBIAN_FRONTEND=noninteractive
-	# Launchpad's API times out now and then; retry before giving up
-	local attempt
-	for attempt in 1 2 3; do
-		sudo apt-add-repository -y ppa:git-core/ppa && break
-		[[ ${attempt} -eq 3 ]] && return 1
-		warn "[system] Adding ppa:git-core/ppa failed (attempt ${attempt}/3), retrying"
-		sleep 10
-	done
+	# Newer git from the PPA is optional: Launchpad is unreachable from some networks
+	# (e.g. GitHub runners), where the lookup hangs ~7 min and then fails
+	if ! sudo timeout 60 apt-add-repository -y ppa:git-core/ppa; then
+		warn "[system] Could not add ppa:git-core/ppa, installing git from the Ubuntu archive"
+	fi
 	sudo apt-get update -qq
 	sudo apt-get install -qq -y "${packages[@]}"
 }
