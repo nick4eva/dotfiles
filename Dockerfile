@@ -2,6 +2,9 @@ FROM ubuntu:focal
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Fail instead of waiting for a username when a cloned repo is gone (e.g. a removed asdf plugin)
+ENV GIT_TERMINAL_PROMPT=0
+
 RUN apt-get update\
     && apt-get --no-install-recommends -y install \
     sudo \

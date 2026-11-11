@@ -26,7 +26,8 @@ do_configure() {
 	asdf plugin add deno
 	asdf plugin add github-cli
 	asdf plugin add act
-	asdf plugin add bat
+	# upstream short-name plugin builds from source (needs cargo); this one installs the release binary
+	asdf plugin add bat https://github.com/s3than/asdf-bat.git
 	asdf plugin add delta
 	asdf plugin add dotnet
 	asdf plugin add nodejs
@@ -35,7 +36,6 @@ do_configure() {
 	asdf plugin add broot https://github.com/cmur2/asdf-broot.git
 	asdf plugin add poetry https://github.com/asdf-community/asdf-poetry.git
 	asdf plugin add k9s https://github.com/looztra/asdf-k9s
-	asdf plugin add glow https://github.com/grimoh/asdf-glow.git
 	asdf plugin add stylua
 	asdf plugin add lazygit
 	asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
@@ -43,7 +43,7 @@ do_configure() {
 	asdf plugin add actionlint
 	asdf plugin add hadolint
 	asdf plugin add dust
-	asdf plugin add exa
+	asdf plugin add eza
 	asdf plugin add jsonnet
 	asdf plugin add jb
 	asdf plugin add pint
