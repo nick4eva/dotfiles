@@ -10,9 +10,7 @@ RUN apt-get update\
     sudo \
     build-essential \
     software-properties-common \
-    && apt-add-repository -y ppa:git-core/ppa \
-    && apt-get update \
-    && apt-get --no-install-recommends -y install git \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf

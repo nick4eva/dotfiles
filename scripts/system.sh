@@ -27,7 +27,14 @@ do_install() {
 
 	info "[system] Install packages"
 	export DEBIAN_FRONTEND=noninteractive
-	sudo apt-add-repository -y ppa:git-core/ppa
+	# Launchpad's API times out now and then; retry before giving up
+	local attempt
+	for attempt in 1 2 3; do
+		sudo apt-add-repository -y ppa:git-core/ppa && break
+		[[ ${attempt} -eq 3 ]] && return 1
+		warn "[system] Adding ppa:git-core/ppa failed (attempt ${attempt}/3), retrying"
+		sleep 10
+	done
 	sudo apt-get update -qq
 	sudo apt-get install -qq -y "${packages[@]}"
 }
