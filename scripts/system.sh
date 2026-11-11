@@ -53,10 +53,13 @@ do_configure() {
 	info "[system][configure] Install patched fonts"
 	local install_dir="/tmp/nerd-fonts"
 	sudo rm -rf "${install_dir}" && mkdir -p "${install_dir}"
-	git clone --quiet --filter=blob:none --sparse "https://github.com/ryanoasis/nerd-fonts.git" "${install_dir}"
+	# Works with git 2.25 (focal without the git-core PPA): no `clone --sparse`, no `sparse-checkout add`
+	git clone --quiet --filter=blob:none --no-checkout "https://github.com/ryanoasis/nerd-fonts.git" "${install_dir}"
 	(
 		cd "${install_dir}"
-		git sparse-checkout add patched-fonts/Meslo/L/Regular
+		git sparse-checkout init --cone
+		git sparse-checkout set patched-fonts/Meslo/L/Regular
+		git checkout --quiet
 		find . -type f -name '*.ttf' ! -name '*Windows*' -exec cp "{}" "${FONTS_DIR}" \;
 	)
 	sudo fc-cache -f
