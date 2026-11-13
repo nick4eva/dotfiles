@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # tmux integration for interactive shells.
 #
 # Switches (set to 0 in ~/dotfiles/zsh/extras or ~/.zshenv to turn a part off):
