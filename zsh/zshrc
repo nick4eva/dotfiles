@@ -107,3 +107,5 @@ export PATH="$PNPM_HOME:$PATH"
 
 eval "$(navi widget zsh)"
 
+# tmux: auto-attach and window names (switches in the file)
+source ~/dotfiles/zsh/tmux.zsh
