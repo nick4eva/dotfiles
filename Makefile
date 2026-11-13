@@ -1,7 +1,7 @@
 include test.mk
 
 .DEFAULT_GOAL := all
-.PHONY: asdf ctop git zsh
+.PHONY: asdf ctop git lazygit zsh
 
 all: system git asdf terminal devops neovim ## Install and configure everything (default)
 help: ## Display help
