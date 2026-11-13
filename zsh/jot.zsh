@@ -43,9 +43,14 @@ jot() {
     [[ -f "$FRICTION_LOG_FILE" ]] && echo "---" && command cat "$FRICTION_LOG_FILE"
     return
   fi
-  echo "$(date +%Y-%m-%d\ %H:%M) $*" >> "$FRICTION_LOG_FILE"
+  # One note per line: jotl and jotd number notes by line
+  local note="${*//$'\n'/ }"
+  if ! print -r -- "$(date +%Y-%m-%d\ %H:%M) ${note}" >> "$FRICTION_LOG_FILE"; then
+    printf '\033[31m✗ Could not write to %s\033[0m\n' "$FRICTION_LOG_FILE" >&2
+    return 1
+  fi
   date +%s > "$FRICTION_REMINDER_FILE"
-  printf '\033[32m✓ Logged: %s\033[0m\n' "$*"
+  printf '\033[32m✓ Logged: %s\033[0m\n' "$note"
 }
 
 # Review/manage friction log
