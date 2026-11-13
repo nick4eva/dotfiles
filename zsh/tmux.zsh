@@ -68,7 +68,8 @@ tmux_shell_integration() {
   fi
 
   if [[ "${DOTFILES_TMUX_AUTOSTART:-1}" != 0 ]] && _tmux_autostart_allowed; then
-    tmux attach-session -t default || tmux new-session -s default
+    # -A: attach when "default" exists, otherwise create it
+    tmux new-session -A -s default
   fi
 }
 
