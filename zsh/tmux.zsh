@@ -15,20 +15,36 @@ _tmux_autostart_allowed() {
   [[ "${TERMINAL_EMULATOR}" != "JetBrains-JediTerm" ]]
 }
 
+# Name of the command a command line runs, without wrappers and their options:
+# "sudo -u root apt update" -> "apt", "  ./bin/run.sh x" -> "run.sh"
+_tmux_command_name() {
+  local -a words=(${(z)1})
+  local word wrapper=""
+  while (( $#words )); do
+    word="${words[1]}"
+    if [[ "$word" == (sudo|noglob|nocorrect|command|builtin|exec|nohup|time) ]]; then
+      wrapper="$word"
+    elif [[ -n "$wrapper" && "$word" == -* ]]; then
+      # sudo options that take a value: skip the value as well
+      [[ "$wrapper" == sudo && "$word" == -[ugCDhpRrTt] ]] && shift words
+    elif [[ "$word" != *=* ]]; then
+      break
+    fi
+    shift words
+  done
+  print -r -- "${${words[1]:-}:t}"
+}
+
+# -t "$TMUX_PANE": rename the window this shell runs in, not the one in focus
 _tmux_rename_preexec() {
-  local cmd="${1%% *}"
-  # Show the actual command, not wrappers like sudo/noglob
-  case "$cmd" in
-    sudo|noglob|nocorrect|command|builtin|exec) cmd="${1#* }"; cmd="${cmd%% *}" ;;
-  esac
-  tmux rename-window "${cmd}($(basename "$PWD"))"
+  tmux rename-window -t "${TMUX_PANE}" "$(_tmux_command_name "$1")(${(%):-%1~})"
   # Re-enable automatic-rename so tmux tracks sub-processes
   # (e.g., cc-history launching claude)
-  tmux set-window-option automatic-rename on
+  tmux set-window-option -t "${TMUX_PANE}" automatic-rename on
 }
 
 _tmux_rename_precmd() {
-  tmux rename-window "$(basename "$PWD")"
+  tmux rename-window -t "${TMUX_PANE}" "${(%):-%1~}"
 }
 
 tmux_shell_integration() {
