@@ -66,6 +66,9 @@ case "${OSTYPE}" in
 esac
 
 # Source files {{{2
+# Load jot
+source ~/dotfiles/zsh/jot.zsh
+
 # Load aliases
 source ~/dotfiles/zsh/aliases.zsh
 
