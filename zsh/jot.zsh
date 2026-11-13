@@ -27,8 +27,8 @@ _friction_check() {
   elapsed=$(( now - last ))
 
   if (( elapsed >= FRICTION_REMINDER_INTERVAL )); then
-    local count
-    count=$(wc -l < "$FRICTION_LOG_FILE" 2>/dev/null || echo 0)
+    local count=0
+    [[ -f "$FRICTION_LOG_FILE" ]] && count=$(wc -l < "$FRICTION_LOG_FILE")
     # Dim yellow, non-intrusive
     printf '\033[33m💡 Hit any friction? Remember: jot "your note here" (%d items logged)\033[0m\n' "$count"
     echo "$now" > "$FRICTION_REMINDER_FILE"
