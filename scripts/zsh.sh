@@ -8,7 +8,13 @@ source "$(pwd)/scripts/util.sh"
 do_configure() {
 	info "[zsh] Configure"
 	info "[zsh][configure] Set as default shell"
-	chsh -s "$(which zsh)"
+	local zsh_path
+	zsh_path="$(command -v zsh)"
+	if [[ "$(getent passwd "${USER}" | cut -d: -f7)" == "${zsh_path}" ]]; then
+		return 0
+	fi
+	# Plain chsh asks for the user's password, which hangs non-interactive runs
+	sudo chsh -s "${zsh_path}" "${USER}"
 }
 
 main() {
