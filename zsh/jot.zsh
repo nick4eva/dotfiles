@@ -63,14 +63,23 @@ jotd() {
     echo "Usage: jotd <line_number>"
     return 1
   fi
-  local entry
-  entry=$(sed -n "${1}p" "$FRICTION_LOG_FILE")
+  local entry=""
+  [[ -f "$FRICTION_LOG_FILE" ]] && entry=$(sed -n "${1}p" "$FRICTION_LOG_FILE")
   if [[ -z "$entry" ]]; then
     echo "No item #$1 in $FRICTION_LOG_FILE"
     return 1
   fi
-  echo "done $(date +%Y-%m-%d\ %H:%M) | $entry" >> "$FRICTION_DONE_FILE"
-  sed -i "${1}d" "$FRICTION_LOG_FILE"
+  # Archive first; remove the note only once it is archived. The temp file keeps the
+  # log intact if the rewrite fails (and works with BSD sed, which has no plain -i).
+  if ! print -r -- "done $(date +%Y-%m-%d\ %H:%M) | $entry" >> "$FRICTION_DONE_FILE"; then
+    printf '\033[31m✗ Could not write to %s; note #%s kept\033[0m\n' "$FRICTION_DONE_FILE" "$1" >&2
+    return 1
+  fi
+  if ! { sed "${1}d" "$FRICTION_LOG_FILE" > "$FRICTION_LOG_FILE.tmp" && mv "$FRICTION_LOG_FILE.tmp" "$FRICTION_LOG_FILE"; }; then
+    rm -f "$FRICTION_LOG_FILE.tmp"
+    printf '\033[31m✗ Archived note #%s but could not remove it from %s\033[0m\n' "$1" "$FRICTION_LOG_FILE" >&2
+    return 1
+  fi
   printf '\033[32m✓ Completed #%s: %s\033[0m (moved to %s)\n' "$1" "$entry" "$FRICTION_DONE_FILE"
 }
 
