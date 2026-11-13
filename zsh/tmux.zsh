@@ -8,9 +8,11 @@
 # Optional: tmux-tools (https://github.com/raine/tmux-tools) for `cch`:
 #   git clone https://github.com/raine/tmux-tools.git ~/.tmux-tools
 
-# Terminals embedded in editors get their own shell, not the shared tmux session
+# Only a newly opened terminal attaches: not `zsh -ic 'cmd'`, not a shell without a terminal.
+# Terminals embedded in editors get their own shell, not the shared tmux session.
 _tmux_autostart_allowed() {
-  [[ -o interactive && -z "${TMUX}" ]] || return 1
+  [[ -o interactive && -z "${TMUX}" && -z "${ZSH_EXECUTION_STRING}" ]] || return 1
+  [[ -t 0 && -t 1 ]] || return 1
   [[ "${TERM_PROGRAM}" != "vscode" && "${TERM_PROGRAM}" != "kiro" ]] || return 1
   [[ "${TERMINAL_EMULATOR}" != "JetBrains-JediTerm" ]]
 }
