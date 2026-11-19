@@ -31,6 +31,9 @@ do_install() {
 	# (e.g. GitHub runners), where the lookup hangs ~7 min and then fails
 	if ! sudo timeout 60 apt-add-repository -y ppa:git-core/ppa; then
 		warn "[system] Could not add ppa:git-core/ppa, installing git from the Ubuntu archive"
+		# A failed key download can leave the PPA's source behind without its key,
+		# which makes the apt-get update below fail with NO_PUBKEY
+		sudo rm -f /etc/apt/sources.list.d/git-core-ubuntu-ppa-*.list
 	fi
 	sudo apt-get update -qq
 	sudo apt-get install -qq -y "${packages[@]}"
