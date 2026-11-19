@@ -37,7 +37,7 @@ do_configure() {
 	asdf plugin add poetry https://github.com/asdf-community/asdf-poetry.git
 	asdf plugin add k9s https://github.com/looztra/asdf-k9s
 	asdf plugin add stylua
-	asdf plugin add lazygit
+	# lazygit: its asdf plugin (nklmilojevic/asdf-lazygit) was deleted, so lazygit is not installed here
 	asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
 	asdf plugin add editorconfig-checker
 	asdf plugin add actionlint
