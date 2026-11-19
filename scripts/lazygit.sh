@@ -8,6 +8,7 @@ source "$(pwd)/scripts/util.sh"
 do_configure() {
 	info "[lazygit] Configure"
 	info "[lazygit][configure] Create config file symlink"
+	install -d "${XDG_CONFIG_HOME}/lazygit"
 	ln -fs "$(pwd)/lazygit/config.yml" "${XDG_CONFIG_HOME}/lazygit/config.yml"
 }
 
