@@ -1,0 +1,10 @@
+[Unit]
+Description=Docker cleanup (dangling images, anonymous volumes, build cache, stale networks)
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/docker-cleanup.sh
+Nice=10
+IOSchedulingClass=idle

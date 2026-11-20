@@ -1,7 +1,7 @@
 include test.mk
 
 .DEFAULT_GOAL := all
-.PHONY: asdf ctop git lazygit zsh
+.PHONY: asdf ctop docker git lazygit zsh
 
 all: system git asdf terminal devops neovim ## Install and configure everything (default)
 help: ## Display help
@@ -43,9 +43,14 @@ win32yank: ## Install win32yank
 navi: ## Install navi
 	@./scripts/navi.sh install
 
-devops: awscli ctop tfsec ansible #kubectl istioctl ## Install and configure devops tools
+devops: awscli ctop tfsec docker ansible #kubectl istioctl ## Install and configure devops tools
 awscli: ## Install awscli
 	@./scripts/awscli.sh install
+docker: docker-install docker-configure ## Install and configure docker
+docker-install: ## Install Docker CE from the official apt repo
+	@./scripts/docker.sh install
+docker-configure: ## Configure docker daemon.json and daily cleanup timer
+	@./scripts/docker.sh configure
 ctop: ctop-install ctop-configure ## Install and configure ctop
 ctop-install: ## Install ctop
 	@./scripts/ctop.sh install
